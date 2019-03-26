@@ -1,0 +1,18 @@
+[
+  {
+    "staff-number": "E1234567",
+    "first-name": "John",
+    "last-name": "Smith",
+    "impact": "Finance",
+    "potential-Category": "Key Team Talent",
+    "potential": "Jane Doe",
+    "Previous-Impact-Scores": [3, 2, 1],
+    "Previous-Potential-Category-Scores": ["Team", "Team", "Team"],
+    "Previous-Potential-Score": [5, 3, 1],
+    "date-last-reviewed": "12/15/2018",
+    "Edit-History": ["Jane Doe", "12/15/2018"],
+    "User-Created-Session": "Talent Team member",
+    "Succession-plan": "notes",
+    "Manager-Comments": "notes"
+  }
+]
