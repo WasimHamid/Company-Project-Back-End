@@ -10,7 +10,10 @@ var sessionRouter = require("./routes/session");
 var employeeRouter = require("./routes/employees");
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/Vulcan", { useNewUrlParser: true });
+mongoose.connect(
+  "mongodb+srv://appservice:tH15isPA55@cluster0-fhx89.mongodb.net/Project-Vulcan?retryWrites=true",
+  { useNewUrlParser: true }
+);
 
 var app = express();
 

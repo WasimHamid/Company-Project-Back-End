@@ -1,18 +1,21 @@
 [
   {
-    "staff-number": "E1234567",
-    "first-name": "John",
-    "last-name": "Smith",
-    "impact": "Finance",
-    "potential-Category": "Key Team Talent",
-    "potential": "Jane Doe",
-    "Previous-Impact-Scores": [3, 2, 1],
-    "Previous-Potential-Category-Scores": ["Team", "Team", "Team"],
-    "Previous-Potential-Score": [5, 3, 1],
-    "date-last-reviewed": "12/15/2018",
-    "Edit-History": ["Jane Doe", "12/15/2018"],
-    "User-Created-Session": "Talent Team member",
-    "Succession-plan": "notes",
-    "Manager-Comments": "notes"
+    "staffNumber": "E1234567",
+    "firstName": "John",
+    "lastName": "Smith",
+    "department": "Finance",
+    "manager": "Jane Doe",
+    "scores": [["Kate Johnson", 2, 3, 1], ["Robyn Vann", 4, 1, 4]],
+    "impact": 3,
+    "potentialCategory": 3,
+    "potential": 3,
+    "previousImpactScores": [4, 3, 2],
+    "previousPotentialCategoryScores": [2, 2, 1],
+    "previousPotentialScore": [5, 3, 1],
+    "dateLastReviewed": "12/15/2018",
+    "editHistory": ["Jane Doe", "12/15/2018"],
+    "userCreatedSession": "Talent Team Member",
+    "successionPlan": "notes",
+    "managerComments": "notes"
   }
 ]
