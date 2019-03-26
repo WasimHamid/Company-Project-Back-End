@@ -1,0 +1,22 @@
+[
+  {
+    "staffNumber": "E1234567",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john@banking.com",
+    "department": "Finance",
+    "manager": "Jane Doe",
+    "accessLevel": 1,
+    "dateLastReviewed": "12/15/2018"
+  },
+  {
+    "staffNumber": "E7654321",
+    "firstName": "Carol",
+    "lastName": "Jones",
+    "email": "carol@banking.com",
+    "department": "Banking",
+    "manager": "Jack Banks",
+    "accessLevel": 1,
+    "dateLastReviewed": "12/10/2018"
+  }
+]
