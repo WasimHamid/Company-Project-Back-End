@@ -13,7 +13,6 @@ router.get("/", async (req, res, next) => {
       error: err
     });
   }
-<<<<<<< HEAD
 });
 
 router.post("/", async (req, res, next) => {
@@ -88,27 +87,6 @@ router.patch("/:id", async function(req, res, next) {
   }
 
   await session.save();
-=======
-});
-
-router.post("/", async (req, res, next) => {
-  try {
-    console.log(req.body);
-    const session = new Session(req.body);
-    await session.save();
-    res.status(201).json({ payload: { session } });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "error creating employees", error: err });
-  }
-router.post("/", async function(req, res, next) {
-  // const {owner, ...rest} = req.body;
-  const session = new Session(req.body);
-  // const employee = await Employee.findOne({staffNumber: owner});
-  // session.owner = employee._id;
-  await session.save();
-  res.json({ title: "Session" });
->>>>>>> 085797ef668264574c678d1b992a136a74c3b7bf
 });
 
 router.patch("/:id", async function(req, res, next) {
