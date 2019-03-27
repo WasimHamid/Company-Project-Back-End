@@ -1,31 +1,26 @@
 const mongoose = require("mongoose");
+const shortid = require("shortid");
 
 const sessionsSchema = new mongoose.Schema(
   {
-    staffNumber: { type: String, required: true, unique: true },
-    firstname: String,
-    lastname: String,
-    department: String,
-    manager: String,
-    scores: Array,
-    potentialCategory: String,
-    potential: String,
-    impact: Number,
-    potentialCategory: Number,
-    potential: Number,
-    previousImpactScores: Array,
-    previousPotentialCategoryScores: Array,
-    previousPotentialScore: Array,
+    sessionId: { type: String, default: shortid.generate },
+    impact: Array,
+    potentialCategory: Array,
+    potential: Array,
+    overallImpact: Number,
+    overallPotentialCategory: Number,
+    overallPotential: Number,
     dateLastReviewed: Date,
-    editHistory: { type: String, type: Date },
+    editHistory: Array,
     userCreatedSession: String,
     successionPlan: String,
-    managerComments: String
+    managerComments: String,
+    owner: { type: mongoose.Schema.Types.ObjectId, ref: "Employee" }
   },
 
   { timestamps: true }
 );
 
-const Session = mongoose.model("sessions", sessionsSchema);
+const Session = mongoose.model("Session", sessionsSchema);
 
 module.exports = Session;

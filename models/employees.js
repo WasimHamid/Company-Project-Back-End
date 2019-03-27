@@ -9,10 +9,13 @@ const employeesSchema = new mongoose.Schema(
     department: String,
     manager: String,
     accessLevel: Number,
-    dateLastReviewed: Date
+    dateLastReviewed: Date,
+    previousImpactScores: Array,
+    previousPotentialCategoryScores: Array,
+    previousPotentialScore: Array
   },
 
   { timestamps: true }
 );
 
-module.exports = mongoose.model("employees", employeesSchema);
+module.exports = mongoose.model("Employee", employeesSchema);

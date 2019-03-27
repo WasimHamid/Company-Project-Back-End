@@ -1,9 +1,20 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const User = require("../models/users");
+const router = express.Router();
 
-/* GET users listing. */
-router.get("/", function(req, res, next) {
-  res.json({ message: "respond with a resource" });
+router.post("/", function(req, res, next) {
+  const user = new User(req.body);
+
+  user
+    .save()
+    .then(() => {
+      res.json({
+        success: true,
+        message: `Created ${user.firstName} as a user`,
+        payload: user
+      });
+    })
+    .catch(err => console.error(err));
 });
 
 module.exports = router;
