@@ -4,6 +4,16 @@ const shortid = require("shortid");
 const sessionsSchema = new mongoose.Schema(
   {
     sessionId: { type: String, default: shortid.generate },
+var sessionId = require("short-id");
+sessionId.configure({
+  length: 5,
+  algorithm: "sha1",
+  salt: Math.random
+});
+
+const sessionsSchema = new mongoose.Schema(
+  {
+    sessionId: sessionId.generate(),
     impact: Array,
     potentialCategory: Array,
     potential: Array,
