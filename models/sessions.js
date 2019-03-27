@@ -1,26 +1,31 @@
 const mongoose = require("mongoose");
+var sessionId = require("short-id");
+sessionId.configure({
+  length: 5,
+  algorithm: "sha1",
+  salt: Math.random
+});
 
 const sessionsSchema = new mongoose.Schema(
   {
-    staffNumber: { type: String, required: true, unique: true },
-    firstname: String,
-    lastname: String,
-    impact: String,
-    potentialCategory: String,
-    potential: String,
-    previousImpactScores: Array,
-    previousPotentialCategoryScores: Array,
-    previousPotentialScore: Array,
+    sessionId: sessionId.generate(),
+    impact: Array,
+    potentialCategory: Array,
+    potential: Array,
+    overallImpact: Number,
+    overallPotentialCategory: Number,
+    overallPotential: Number,
     dateLastReviewed: Date,
-    editHistory: { type: String, type: Date },
+    editHistory: Array,
     userCreatedSession: String,
     successionPlan: String,
-    managerComments: String
+    managerComments: String,
+    owner: { type: mongoose.Schema.Types.ObjectId, ref: "Employee" }
   },
 
   { timestamps: true }
 );
 
-const Session = mongoose.model("sessions", sessionsSchema);
+const Session = mongoose.model("Session", sessionsSchema);
 
 module.exports = Session;
