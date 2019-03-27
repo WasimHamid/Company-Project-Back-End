@@ -15,6 +15,18 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.get("/:empId", async function(req, res, next) {
+  try {
+    const employees = await Employee.find({ staffNumber: empId });
+    res.json({ payload: { employees } });
+  } catch (err) {
+    res.status(500).json({
+      message: "error finding in the database",
+      error: err
+    });
+  }
+});
+
 router.post("/", async (req, res, next) => {
   try {
     console.log(req.body);
