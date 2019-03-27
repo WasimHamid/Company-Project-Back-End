@@ -10,6 +10,8 @@ router.get("/", function(req, res, next) {
 
 router.post("/", async function(req, res, next) {
   // const {owner, ...rest} = req.body;
+  const employee = await Employee.findOne({ staffNumber: staffNumber });
+
   const session = new Session(req.body);
   // const employee = await Employee.findOne({staffNumber: owner});
   // session.owner = employee._id;
@@ -17,7 +19,7 @@ router.post("/", async function(req, res, next) {
   res.json({ title: "Session" });
 });
 
-router.patch("/:id", async function(req, res, next) {
+router.patch("/:sessionId", async function(req, res, next) {
   const { id } = req.params;
   const {
     impact,
@@ -29,7 +31,7 @@ router.patch("/:id", async function(req, res, next) {
     successionPlan,
     managerComments
   } = req.body;
-  const session = await Session.findOne({ _id: id });
+  const session = await Session.findOne({ sessionId: sessionId });
   session.editHistory = [
     {
       impact: Array,

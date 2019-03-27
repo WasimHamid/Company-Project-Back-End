@@ -17,5 +17,5 @@ const employeesSchema = new mongoose.Schema(
 
   { timestamps: true }
 );
-
+employeesSchema.index({ "$**": "text" });
 module.exports = mongoose.model("Employee", employeesSchema);

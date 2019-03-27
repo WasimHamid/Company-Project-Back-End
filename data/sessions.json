@@ -16,3 +16,19 @@
     "Manager-Comments": "notes"
   }
 ]
+
+// sessionId: { type: String, default: shortid.generate
+// },
+//   impact: Array,
+//   potentialCategory: Array,
+//   potential: Array,
+//   overallImpact: Number,
+//   overallPotentialCategory: Number,
+//   overallPotential: Number,
+//   dateLastReviewed: Date,
+//   editHistory: Array,
+//   userCreatedSession: String,
+//   successionPlan: String,
+//   managerComments: String,
+//   owner: { type: mongoose.Schema.Types.ObjectId, ref: "Employee"
+// }

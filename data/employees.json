@@ -20,3 +20,16 @@
     "dateLastReviewed": "12/10/2018"
   }
 ]
+
+// staffNumber: { type: String, required: true, unique: true
+// },
+// firstName: String,
+// lastName: String,
+// email: String,
+// department: String,
+// manager: String,
+// accessLevel: Number,
+// dateLastReviewed: Date,
+// previousImpactScores: Array,
+// previousPotentialCategoryScores: Array,
+// previousPotentialScore: Array
