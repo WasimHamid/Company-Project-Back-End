@@ -16,7 +16,7 @@ mongoose.connect(
   { useNewUrlParser: true }
 );
 
-var app = express();
+const app = express();
 
 // This middleware is to solve the CORS issues
 // app.use(function(req, res, next) {

@@ -6,7 +6,10 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+<<<<<<< HEAD
     "bcrypt": "^3.0.5",
+=======
+>>>>>>> 085797ef668264574c678d1b992a136a74c3b7bf
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.5",
@@ -19,5 +22,10 @@
     "mongoose": "^5.4.19",
     "morgan": "~1.9.0",
     "shortid": "^2.2.14"
+<<<<<<< HEAD
+=======
+    "short-id": "0.1.0-1"
+
+>>>>>>> 085797ef668264574c678d1b992a136a74c3b7bf
   }
 }
