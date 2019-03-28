@@ -15,24 +15,30 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.post("/", async (req, res, next) => {
-  try {
-    console.log(req.body);
-    const session = new Session(req.body);
-    await session.save();
-    res.status(201).json({ payload: { session } });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "error creating employees", error: err });
-  }
-  // router.post("/", async function (req, res, next) {
-  //   // const {owner, ...rest} = req.body;
-  //   const session = new Session(req.body);
-  //   // const employee = await Employee.findOne({staffNumber: owner});
-  //   // session.owner = employee._id;
-  //   await session.save();
-  //   res.json({ title: "Session" });
+router.post("/", function(req, res, next) {
+  const session = new Session(req.body);
+  session.save();
+  res.json({ title: "Session" });
 });
+
+// router.post("/", async (req, res, next) => {
+//   try {
+//     console.log(req.body);
+//     const session = new Session(req.body);
+//     await session.save();
+//     res.status(201).json({ payload: { session } });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json({ message: "error creating employees", error: err });
+//   }
+// router.post("/", async function (req, res, next) {
+//   // const {owner, ...rest} = req.body;
+//   const session = new Session(req.body);
+//   // const employee = await Employee.findOne({staffNumber: owner});
+//   // session.owner = employee._id;
+//   await session.save();
+//   res.json({ title: "Session" });
+// });
 
 router.patch("/:id", async function(req, res, next) {
   const { id } = req.params;

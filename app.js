@@ -29,7 +29,7 @@ const app = express();
 // });
 
 const authenticate = (req, res, next) => {
-  const token = req.query.token;
+  const token = req.params.token;
   console.log("token", token);
   if (token) {
     return jwt.verify(token, "secret token", (err, decoded) => {
@@ -57,7 +57,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/login", loginRouter);
-app.use("/sessions", authenticate, sessionRouter);
+app.use("/sessions", sessionRouter);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/employees", employeeRouter);

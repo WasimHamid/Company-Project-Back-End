@@ -31,13 +31,13 @@ router.post("/", async function(req, res, next) {
       );
       return res.json({
         success: true,
-        message: "authentication successfull",
+        message: "authentication successful",
         token
       });
     }
     return res.status(401).json({
       success: false,
-      message: "login unsuccessfull, passwords do not match"
+      message: "login unsuccessful, passwords do not match"
     });
   } catch (err) {
     res.status(500).json({

@@ -7,6 +7,7 @@ const sessionsSchema = new mongoose.Schema(
     impact: Array,
     potentialCategory: Array,
     potential: Array,
+    managers: Array,
     overallImpact: Number,
     overallPotentialCategory: Number,
     overallPotential: Number,
