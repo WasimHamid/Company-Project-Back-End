@@ -1,17 +1,29 @@
 const express = require("express");
 const Employee = require("../models/employees");
+const Session = require("../models/sessions");
 
 const router = express.Router();
+
 router.get("/:staffNumber", async (req, res, next) => {
   try {
-    const staffNumber = req.param("staffNumber") || null;
+    const { staffNumber } = req.params;
+    const { sessions } = req.query;
 
     let query = {
       staffNumber: staffNumber
     };
 
-    const employees = await Employee.findOne(query);
-    res.json({ payload: { employee: employees } });
+    const employee = await Employee.findOne(query);
+    let payload = {
+      employee
+    };
+    if (sessions) {
+      payload = {
+        ...payload,
+        sessionsHistory: await Session.find({ owner: employee._id })
+      };
+    }
+    res.json({ payload });
   } catch (err) {
     res.status(500).json({
       message: "error finding in the database",
