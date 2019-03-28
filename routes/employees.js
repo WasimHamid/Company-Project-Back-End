@@ -34,6 +34,7 @@ router.get("/:staffNumber", async (req, res, next) => {
 
 router.get("/", async (req, res, next) => {
   try {
+    const sessions = req.query;
     const searchTerm = req.param("q") || null;
 
     let query = {};
@@ -41,9 +42,18 @@ router.get("/", async (req, res, next) => {
       query = { $text: { $search: searchTerm } };
     }
 
-    const employees = await Employee.find(query);
+    const employee = await Employee.find(query);
+    let payload = {
+      employee
+    };
+    if (sessions) {
+      payload = {
+        ...payload,
+        sessionsHistory: await Session.find({ owner: employee._id })
+      };
+    }
 
-    res.json({ payload: { employees } });
+    res.json({ payload });
   } catch (err) {
     res.status(500).json({
       message: "error finding in the database",
@@ -65,3 +75,47 @@ router.post("/", async (req, res, next) => {
 });
 
 module.exports = router;
+
+// router.get("/", async (req, res, next) => {
+//   try {
+//     const { sessions } = req.query;
+//     const searchTerm = req.param("q") || null;
+
+//     let query = {};
+//     if (searchTerm !== null) {
+//       query = { $text: { $search: searchTerm } };
+//     }
+
+//     const employee = await Employee.find(query);
+//     let payload = {
+//       employee
+//     };
+//     if (sessions) {
+//       payload = {
+//         ...payload,
+//         sessionsHistory: await Session.find({ owner: employee._id })
+//       };
+//     }
+
+//     res.json({ payload });
+//   } catch (err) {
+//     res.status(500).json({
+//       message: "error finding in the database",
+//       error: err
+//     });
+//   }
+// });
+
+// router.post("/", async (req, res, next) => {
+//   try {
+//     console.log(req.body);
+//     const employees = new Employee(req.body);
+//     await employees.save();
+//     res.status(201).json({ payload: { employees } });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json({ message: "error creating employees", error: err });
+//   }
+// });
+
+// module.exports = router;
