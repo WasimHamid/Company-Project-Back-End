@@ -1,12 +1,39 @@
 var express = require("express");
 const Session = require("../models/sessions");
+const Employee = require("../models/employees");
 
 var router = express.Router();
 
+router.get("/:sessionId", async (req, res, next) => {
+  try {
+    const sessionId = req.param("sessionId") || null;
+
+    let query = {
+      sessionId: sessionId
+    };
+
+    const sessions = await Session.findOne(query); //.populate("owner");
+    res.json({ payload: { session: sessions } });
+  } catch (err) {
+    res.status(500).json({
+      message: "error finding in the database",
+      error: err
+    });
+  }
+});
+
 router.get("/", async (req, res, next) => {
   try {
-    const session = await Session.find({});
-    res.json({ payload: { session } });
+    const searchTerm = req.param("q") || null;
+
+    let query = {};
+    if (searchTerm !== null) {
+      query = { $text: { $search: searchTerm } };
+    }
+
+    const sessions = await Session.find(query);
+
+    res.json({ payload: { sessions } });
   } catch (err) {
     res.status(500).json({
       message: "error finding in the database",
