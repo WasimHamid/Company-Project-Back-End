@@ -31,6 +31,27 @@ router.get("/:staffNumber", async (req, res, next) => {
   }
 });
 
+router.get("/owner/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    let query = {
+      _id: id
+    };
+
+    const employee = await Employee.findOne(query);
+    let payload = {
+      employee
+    };
+    res.json({ payload });
+  } catch (err) {
+    res.status(500).json({
+      message: "error finding in the database",
+      error: err
+    });
+  }
+});
+
 router.get("/", async (req, res, next) => {
   try {
     const sessions = req.query;
